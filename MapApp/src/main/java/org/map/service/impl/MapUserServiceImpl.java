@@ -2,6 +2,7 @@ package org.map.service.impl;
 
 import java.net.URLEncoder;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -41,6 +42,16 @@ public class MapUserServiceImpl implements MapUserService {
 			result.setMessage("illegal arguments");
 			return JSONObject.toJSONString(result);
 		}
+		MapUserExample example = new MapUserExample();
+		example.createCriteria().andUsernameEqualTo(record.getUsername());
+		List<MapUser> _list = mapUserMapper.selectByExample(example);
+		if(!list.isEmpty()){
+			Result result = new Result();
+			result.setStatus("400");
+			result.setMessage("username has been existed");
+			return JSONObject.toJSONString(result);
+		}
+		record.setId(UUID.randomUUID().toString().replace("-", ""));
 		mapUserMapper.insert(record);
 		return JSONObject.toJSONString(new Result());
 	}

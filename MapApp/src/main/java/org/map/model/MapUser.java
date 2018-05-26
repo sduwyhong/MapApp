@@ -1,6 +1,5 @@
 package org.map.model;
 
-import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import net.sf.oval.constraint.Max;
@@ -8,7 +7,6 @@ import net.sf.oval.constraint.MaxLength;
 import net.sf.oval.constraint.Min;
 import net.sf.oval.constraint.NotBlank;
 
-@XmlRootElement
 public class MapUser extends MapUserKey {
     /**
      *

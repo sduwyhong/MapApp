@@ -169,7 +169,7 @@
 			<version>5.1.17</version>
 		</dependency>
 		<!-- framework end -->
-		
+
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -196,7 +196,7 @@
 			<artifactId>oval</artifactId>
 			<version>1.81</version>
 		</dependency>
-		
+
 	</dependencies>
 
 	<build>

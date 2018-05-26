@@ -3,6 +3,7 @@ package org.map.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -15,6 +16,8 @@ import org.map.model.MapUser;
 import org.map.service.MapUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.alibaba.fastjson.JSONObject;
 
 /**
  * @author wyhong
@@ -32,7 +35,8 @@ public class MapUserAction {
 	@Path("/create")
 	@POST
 	@Produces(JSON)
-	public String register(MapUser mapUser) {
+	public String register(@FormParam("record")String json) {
+		MapUser mapUser = JSONObject.parseObject(json, MapUser.class);
 		return mapUserService.register(mapUser);
 	}
 	

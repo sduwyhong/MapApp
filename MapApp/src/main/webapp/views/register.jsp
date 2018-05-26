@@ -7,47 +7,66 @@ request.setAttribute("path", path);
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 
-    <title>Signin</title>
-	<link rel="icon" href="${path}/assets/image/favicon.ico">
-    <!-- Bootstrap core CSS -->
-    <link href="${path}/assets/css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="${path}/assets/css/bootstrapValidator.css"/>
-    <!-- Custom styles for this template -->
-    <link href="${path}/assets/css/signin.css" rel="stylesheet">
-    
-    <script type="text/javascript" src="${path}/assets/js/jquery.min.js"></script>
-    <script type="text/javascript" src="${path}/assets/js/jquery.form.js"></script>
-    <script type="text/javascript" src="${path}/assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="${path}/assets/js/bootstrapValidator.js"></script>
-    <script type="text/javascript" src="${path}/assets/js/md5.js"></script>
-    
-  </head>
+<title>Register</title>
+<!-- Bootstrap core CSS -->
+<link href="${path}/assets/css/bootstrap.css" rel="stylesheet">
+<link rel="stylesheet" href="${path}/assets/css/bootstrapValidator.css" />
 
-  <body class="text-center">
-    <form class="form-signin" id="loginForm">
-      <img class="mb-4" src="${path}/assets/image/favicon.ico" alt="" width="72" height="72">
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-      <h4><a href="views/register.jsp">didn't have an account?</a></h4>
-       <div class="form-group">
-	      <label class="sr-only">Username</label>
-      	  <input type="text" name="username" class="form-control" placeholder="Username" autofocus>
-      </div>
-      <div class="form-group">
-	      <label class="sr-only">Password</label>
-	      	<input type="password" name="password" class="form-control" placeholder="Password" >
-       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    </form>
-  </body>
+<script type="text/javascript" src="${path}/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="${path}/assets/js/jquery.form.js"></script>
+<script type="text/javascript" src="${path}/assets/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="${path}/assets/js/bootstrapValidator.js"></script>
+<script type="text/javascript" src="${path}/assets/js/md5.js"></script>
+
+</head>
+
+<body class="text-center">
+	<form id="registerForm" method="post" class="form-horizontal" style="margin-top: 300px;">
+		<h1>Register</h1>
+		<div class="form-group">
+			<label class="col-lg-3 control-label">Username</label>
+			<div class="col-lg-5">
+				<input type="text" class="form-control" name="username" />
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-lg-3 control-label">Password</label>
+			<div class="col-lg-5">
+				<input type="text" class="form-control" name="email" />
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-lg-3 control-label">Gender</label>
+			<div class="col-lg-5">
+				<input type="password" class="form-control" name="password" />
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-lg-3 control-label">Preference</label>
+			<div class="col-lg-5">
+				<input type="password" class="form-control" name="password" />
+			</div>
+		</div>
+
+		<div class="form-group">
+				<button type="submit" class="btn btn-primary">Register</button>
+		</div>
+	</form>
+</body>
 <script type="text/javascript">
 $(document).ready(function() {
-    $('#loginForm').bootstrapValidator({
+    $('#registerForm').bootstrapValidator({
             message: 'This value is not valid',
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
@@ -92,13 +111,13 @@ $(document).ready(function() {
             //psw.val(hex_md5(psw.val()));
             
             // Use Ajax to submit form data
-            $('#loginForm').ajaxSubmit({
-            	url:'http://localhost:8888/MapApp/api/v1/user/login',
+            $('#registerForm').ajaxSubmit({
+            	url:'http://localhost:8888/MapApp/api/v1/user/create',
             	type:'post',
             	success:function(data){
             		if(data.status == '200'){
-            			alert('welcome!');
-            			location.href = 'homepage.jsp';
+            			alert('success!');
+            			location.href = 'login.jsp';
             		}else{
             			alert(data.message);
             		}
