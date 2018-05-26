@@ -1,5 +1,14 @@
 package org.map.model;
 
+import javax.ws.rs.FormParam;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import net.sf.oval.constraint.Max;
+import net.sf.oval.constraint.MaxLength;
+import net.sf.oval.constraint.Min;
+import net.sf.oval.constraint.NotBlank;
+
+@XmlRootElement
 public class MapUser extends MapUserKey {
     /**
      *
@@ -8,6 +17,8 @@ public class MapUser extends MapUserKey {
      *
      * @mbg.generated Fri May 25 21:02:39 CST 2018
      */
+	@NotBlank
+	@MaxLength(10)
     private String username;
 
     /**
@@ -17,6 +28,8 @@ public class MapUser extends MapUserKey {
      *
      * @mbg.generated Fri May 25 21:02:39 CST 2018
      */
+	@NotBlank
+	@MaxLength(32)
     private String password;
 
     /**
@@ -26,6 +39,8 @@ public class MapUser extends MapUserKey {
      *
      * @mbg.generated Fri May 25 21:02:39 CST 2018
      */
+	@NotBlank
+	@MaxLength(1)
     private String gender;
 
     /**
@@ -35,6 +50,8 @@ public class MapUser extends MapUserKey {
      *
      * @mbg.generated Fri May 25 21:02:39 CST 2018
      */
+	@Min(0)
+	@Max(1)
     private Byte preference;
 
     /**

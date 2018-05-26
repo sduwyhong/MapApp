@@ -1,0 +1,26 @@
+1.bootstrapValidator.js引发的
+Uncaught RangeError: Maximum call stack size exceeded??
+排查后发现是
+fields: {
+                username: {
+                },
+                password: {
+                }
+        }
+出问题，对比后给input和label外套一层<div class="form-group"></div>解决问题
+
+2.js事件捕获：自上而下，e.target获取捕获对象
+js时间冒泡：自下而上，this获取冒泡对象
+
+3.引入bootstrap.min.css的话，错误提示不会显示红色，要用bootstrap.css
+
+4.将fonts包放在webapp/assets/下才能显示勾差
+
+5.servlet init()出错，根com.sun.jersey.spi.inject.Errors$ErrorMessagesException
+原因：控制器方法配置出错
+
+6.java.lang.AbstractMethodError: javax.ws.rs.core.UriBuilder.uri(Ljava/lang/String;)Ljavax/ws/rs/core/UriBuilder;
+检查UriBuilder类是否重复存在
+而且修改了Pom.xml一定要clean一下!!!不然无法应用到当前web服务器中
+
+7.查找当前项目中的类（包括依赖中的）==》navigate==》open type

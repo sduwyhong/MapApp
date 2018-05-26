@@ -124,4 +124,6 @@ public interface MapUserMapper {
         "where id = #{id,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(MapUser record);
+
+	Byte selectPreferenceById(String id);
 }

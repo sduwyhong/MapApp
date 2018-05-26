@@ -239,4 +239,9 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
+  <select id="selectPreferenceById" resultType="Byte">
+      SELECT preference 
+      FROM map_user
+      WHERE id = #{id}
+  </select>
 </mapper>
