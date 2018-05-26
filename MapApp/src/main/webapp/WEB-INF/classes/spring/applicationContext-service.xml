@@ -7,4 +7,5 @@
 		http://www.springframework.org/schema/context/spring-context-3.1.xsd ">
 	
 	<bean id="mapUserService" class="org.map.service.impl.MapUserServiceImpl"></bean>
+	<bean id="mapService" class="org.map.service.impl.BaiduMapServiceImpl"></bean>
 </beans>

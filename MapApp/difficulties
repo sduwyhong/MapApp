@@ -24,3 +24,9 @@ js时间冒泡：自下而上，this获取冒泡对象
 而且修改了Pom.xml一定要clean一下!!!不然无法应用到当前web服务器中
 
 7.查找当前项目中的类（包括依赖中的）==》navigate==》open type
+
+8.用了好玩的模板+bootstrap验证+Jersey处理实体参数太麻烦，解析前端传来的json代替
+
+9.解决tomcat下网络传输乱码问题
+在Tomcat下, 调用的是DoubleByte做decode,在非Tomcat下,调用的是UTF-8的decode
+BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));

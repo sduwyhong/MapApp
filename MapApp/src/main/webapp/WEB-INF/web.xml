@@ -18,11 +18,11 @@
 	<servlet>
 		<servlet-name>JerseyServlet</servlet-name>
 		<servlet-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</servlet-class>
-		<init-param>  
-          <param-name>com.sun.jersey.config.property.packages</param-name>  
-          <param-value>com.innotek.webservice</param-value>  
-        </init-param>  
-        <load-on-startup>1</load-on-startup>
+		<init-param>
+			<param-name>com.sun.jersey.config.property.packages</param-name>
+			<param-value>com.innotek.webservice</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>JerseyServlet</servlet-name>
@@ -30,6 +30,6 @@
 	</servlet-mapping>
 
 	<welcome-file-list>
-		<welcome-file>views/login.jsp</welcome-file>
+		<welcome-file>views/fancy-login.jsp</welcome-file>
 	</welcome-file-list>
 </web-app>

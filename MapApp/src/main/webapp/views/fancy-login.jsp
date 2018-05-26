@@ -12,17 +12,17 @@ request.setAttribute("path", path);
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 <title>游必有方</title>
 
-<link href="../assets/css/style.css" rel="stylesheet" type="text/css" />
+<link href="${path}/assets/css/style.css" rel="stylesheet" type="text/css" />
 <link href="${path}/assets/css/bootstrap.css" rel="stylesheet">
 <link rel="stylesheet" href="${path}/assets/css/bootstrapValidator.css"/>
 
-<script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="${path}/assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="${path}/assets/js/jquery.form.js"></script>
 <script type="text/javascript" src="${path}/assets/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${path}/assets/js/bootstrapValidator.js"></script>
 <script type="text/javascript" src="${path}/assets/js/md5.js"></script>
 </head>
-<body onLoad="sendRequest()" style="background:url('../assets/images/bg.jpg') no-repeat;background-size: 100%;">
+<body onLoad="sendRequest()" style="background:url('${path}/assets/images/bg.jpg') no-repeat;background-size: 100%;">
 
 <div class="videozz"></div>
 	<video  autoplay muted loop poster="../assets/images/fallba1ck.jpg">
@@ -35,7 +35,7 @@ request.setAttribute("path", path);
     <div class="m-2">
           <div class="m-2-1">
             <form id="loginForm">
-            	<h4><a href="fancy-register.jsp">没有账号？点我注册</a></h4>
+            	<h4><a href="views/fancy-register.jsp">没有账号？点我注册</a></h4>
                 <div class="m-2-2 form-group">
                    <input type="text" name="username" placeholder="请输入账号" />
                 </div>
@@ -63,6 +63,7 @@ request.setAttribute("path", path);
     <div class="m-xz9"></div>
     <div class="m-xz9-1"></div>
     <!-- ajax加载 -->
+    <!-- 
     <div id="loading" hidden="hidden">
 	    <div class="m-x10"></div>
 	    <div class="m-x11"></div>
@@ -72,6 +73,7 @@ request.setAttribute("path", path);
 	    <div class="m-x15"></div>
 	    <div class="m-x16 xzleft"></div>
     </div>
+     -->
     <div class="m-x17 xzleft"></div>
     <div class="m-x18"></div>
     <div class="m-x19 xzleft"></div>
