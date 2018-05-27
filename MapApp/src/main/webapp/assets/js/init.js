@@ -113,4 +113,9 @@ $(document).ready(function () {
 			}, 500);
 		});
 	});
+	//route
+	$('#myModal').on('hidden.bs.modal', function () {
+		//alert('hidden');
+		location.reload();
+	})
 });
