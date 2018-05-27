@@ -158,7 +158,7 @@ $(document).ready(function() {
             	success:function(data){
             		if(data.status == '200'){
             			alert('welcome!');
-            			location.href = 'homepage.jsp';
+            			location.href = 'views/homepage.jsp';
             		}else{
             			alert(data.message);
             		}

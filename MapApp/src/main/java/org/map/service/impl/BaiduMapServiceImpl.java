@@ -1,20 +1,18 @@
 package org.map.service.impl;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.map.result.Result;
 import org.map.service.MapService;
-import org.map.test.TestApi;
 import org.map.webservice.ArrayOfString;
 import org.map.webservice.WeatherWebService;
 import org.map.webservice.WeatherWebServiceSoap;
@@ -59,7 +57,8 @@ public class BaiduMapServiceImpl implements MapService {
 	@Override
 	public String searchLocation(String address) {
 		String request_url = "http://api.map.baidu.com/geocoder/v2/?address="+address+"&output=json&ak=wuDPYMIqWTUBCz8fUwL7GWAHSblRGNIL&callback=showLocation";
-		return invokeApi(request_url);
+		String res = invokeApi(request_url);
+		return res.substring(res.indexOf("(") + 1, res.length() - 1);
 	}
 
 	@Override
@@ -67,8 +66,24 @@ public class BaiduMapServiceImpl implements MapService {
 		origin = searchLocation(origin);
 		destination = searchLocation(destination);
 		//TODO：处理json，解析出经纬度
-		String request_url = "http://api.map.baidu.com/direction/v2/transit?origin=40.056878,116.30815&destination=31.222965,121.505821&ak=wuDPYMIqWTUBCz8fUwL7GWAHSblRGNIL";
+		JSONObject jsonObject = JSONObject.parseObject(origin);
+		origin = format(jsonObject.getJSONObject("result").getJSONObject("location").get("lat").toString()) 
+				+ "," 
+				+format(jsonObject.getJSONObject("result").getJSONObject("location").get("lng").toString());
+		jsonObject = jsonObject.parseObject(destination);
+		destination = format(jsonObject.getJSONObject("result").getJSONObject("location").get("lat").toString())  
+				+ "," 
+				+format(jsonObject.getJSONObject("result").getJSONObject("location").get("lng").toString());
+		System.out.println(origin);
+		System.out.println(destination);
+		//位置：纬度，经度
+		String request_url = "http://api.map.baidu.com/direction/v2/transit?origin="+origin+"&destination="+destination+"&ak=wuDPYMIqWTUBCz8fUwL7GWAHSblRGNIL";
+		System.out.println(request_url);
 		return invokeApi(request_url);
+	}
+
+	private String format(String string) {
+		return string.substring(string.indexOf(".") + 1).length() > 6 ? string.split("\\.")[0] + "." + string.split("\\.")[1].substring(0, 6) : string;
 	}
 
 	@Override
@@ -83,9 +98,21 @@ public class BaiduMapServiceImpl implements MapService {
 		String res = null;
 		for (String string : strings) {
 			//TODO：此处解析有用的数据封装
+			if(string.startsWith("今日天气实况")){
+				System.out.println(string);
+				res = string;
+			}
+		}
+		Map<String, String> map = new LinkedHashMap<String, String>();
+		map.put("目的地", "<strong>"+destination+"</strong>");
+		res = res.replace("。", "；").substring(res.indexOf("：") + 1);
+		String[] items = res.split("；");
+		for (String string : items) {
+			String[] kv = string.split("：");
+			map.put(kv[0], kv[1]);
 		}
 		Result result = new Result();
-		result.setResult(res);
+		result.setResult(map);
 		return JSONObject.toJSONString(result);
 	}
 
