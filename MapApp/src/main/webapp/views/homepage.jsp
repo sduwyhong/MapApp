@@ -15,12 +15,14 @@ request.setAttribute("path", path);
 <link href="${path}/assets/css/bootstrap.css" rel="stylesheet">
 <link href="${path}/assets/css/homepage-style.css" rel="stylesheet">
 <link rel="stylesheet" href="${path}/assets/css/prompt.css" />
-
+<link rel="stylesheet" href="${path }/assets/css/bootstrap-table-expandable.css">
 <!-- js -->
 <script type="text/javascript" src="${path}/assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="${path}/assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${path}/assets/js/vue.js"></script>
 <script type="text/javascript"
 	src="http://api.map.baidu.com/api?v=2.0&ak=Aa7xKwUOb51CW6efijIEBedUHFauvLIw"></script>
+<script src="${path }/assets/js/bootstrap-table-expandable.js"></script>
 	
 <style type="text/css">
 body,html,#allmap {
@@ -70,7 +72,7 @@ li {
                     <a href="#" id="a_interest"><i class="fa fa-fw fa-dropbox"></i> 兴趣点查询</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-cog"></i> 偏好设置</a>
+                    <a href="javascript:$('#myModal').modal()"><i class="fa fa-fw fa-cog"></i> 偏好设置</a>
                 </li>
             </ul>
         </nav>
