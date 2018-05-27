@@ -23,6 +23,9 @@ request.setAttribute("path", path);
 <script type="text/javascript"
 	src="http://api.map.baidu.com/api?v=2.0&ak=Aa7xKwUOb51CW6efijIEBedUHFauvLIw"></script>
 <script src="${path }/assets/js/bootstrap-table-expandable.js"></script>
+<script src="${path }/assets/js/JsonpAjax.js"></script>
+<script src="${path }/assets/js/template-native.js"></script>
+<script src="${path }/assets/js/jquery.citys.js"></script>
 	
 <style type="text/css">
 body,html,#allmap {
@@ -38,6 +41,16 @@ label {
 }
 li {
 	margin-top: 10px;
+}
+.click_work {
+	background-color: #FFFFFF;
+}
+.tr_weather td{
+	color: #000000;
+	font-size: 10px;
+}
+select {
+	color: #000000;
 }
 </style>
 </head>
@@ -57,6 +70,7 @@ li {
                 <li>
                 	<center><label style="color: #DDDDB8">地址查询</label></center>
                     <input type="text" name="keyword" class="form-control">
+                    <div id="word" style="color: #000000"></div>
             		<center><button type="button" onclick="service.parseAddress()" class="btn btn-success">搜索</button></center>
                 </li>
                 <li>

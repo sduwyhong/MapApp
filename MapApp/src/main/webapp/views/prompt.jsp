@@ -5,7 +5,7 @@
 			<span class="glyphicon glyphicon-remove"></span>
 		</div>
 		<br /> 
-		<!--目的地天气查询框-->
+		<!--路线规划查询框-->
 		<div id="transit_container" style="display: none;">
 			<div id="lab1">
 				<span id="lab_login">路线规划查询</span>
@@ -37,6 +37,7 @@
 				<label>请输入您的目的地(Destination)</label>
 				<input type="text" name="dest" class="form-control" placeholder="Destination" autofocus="autofocus"/>
 				<br>
+				<!-- 
 				<center><input type="button" value="查询" class="btn btn-success" onclick="service.weather()" /></center>
 				<br>
 				<div></div>
@@ -44,6 +45,20 @@
 				<center>
 					<p class="p_weather" hidden="hidden"></p>
 				</center>
+				 -->
+				<center><input type="button" value="查询" class="btn btn-success" onclick="service.weather_fancy()" /></center>
+				<br>
+				<hr>
+				<table>
+					<tr hidden="hidden" class="tr_weather">
+					    <td></td>
+					    <td><img src=""></td>
+					    <td><img src=""></td>
+					    <td></td>
+					    <td></td>
+					    <td></td>
+					</tr>
+				</table>
 			</div>
 		</div>
 		<!--经纬度查询框-->
@@ -74,7 +89,23 @@
 			<div id="form_container1">
 				<br />
 				<label>地区(Region)</label>
-				<input type="text" name="region" class="form-control" placeholder="地区" value="济南" />
+				<!-- <input type="text" name="region" class="form-control" placeholder="地区" value="济南" /> -->
+				<div id="demo" class="citys">
+	                <p>
+	                    <select name="province"></select>
+	                    <select name="city"></select>
+	                    <select name="area"></select>
+	                </p>
+	            </div>
+	             <script type="text/javascript">
+	             	var region = '';
+	                $('#demo').citys({
+	                	code:350206,
+	                	onChange:function(data){
+	                		region = data.province + data.city + data.area;
+	                	}
+                	});
+	            </script>
 				<br>
 				<label>兴趣点(Query)</label>
 				<input type="text" name="query" class="form-control" placeholder="兴趣点" autofocus="autofocus"/>

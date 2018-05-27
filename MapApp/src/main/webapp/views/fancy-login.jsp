@@ -15,12 +15,16 @@ request.setAttribute("path", path);
 <link href="${path}/assets/css/style.css" rel="stylesheet" type="text/css" />
 <link href="${path}/assets/css/bootstrap.css" rel="stylesheet">
 <link rel="stylesheet" href="${path}/assets/css/bootstrapValidator.css"/>
+<link rel="stylesheet" href="${path}/assets/css/jquery.slider.css"/>
 
 <script type="text/javascript" src="${path}/assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="${path}/assets/js/jquery.form.js"></script>
 <script type="text/javascript" src="${path}/assets/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${path}/assets/js/bootstrapValidator.js"></script>
 <script type="text/javascript" src="${path}/assets/js/md5.js"></script>
+<script type="text/javascript" src="${path}/assets/js/code.js"></script>
+<script type="text/javascript" src="${path}/assets/js/jquery.slider.min.js"></script>
+
 </head>
 <body onLoad="sendRequest()" style="background:url('${path}/assets/images/bg.jpg') no-repeat;background-size: 100%;">
 
@@ -31,22 +35,29 @@ request.setAttribute("path", path);
 	</video>
     
 <div class="box">
+	
 	<div class="box-a">
     <div class="m-2">
-          <div class="m-2-1">
-            <form id="loginForm">
-            	<h4><a href="views/fancy-register.jsp">没有账号？点我注册</a></h4>
-                <div class="m-2-2 form-group">
-                   <input type="text" name="username" placeholder="请输入账号" />
-                </div>
-                <div class="m-2-2 form-group">
-                   <input type="password" name="password" placeholder="请输入密码"/>
-                </div>
-                <div class="m-2-2 form-group">
-                   <button type="submit" value="登陆"> 登陆 </button>
-                </div>
-            </form>
-          </div>
+    	<center>
+	          <form id="loginForm" style="margin-top: 40px;margin-right: 100px;">
+	          	<h4><a href="views/fancy-register.jsp">没有账号？点我注册</a></h4>
+	              <div class="m-2-2 form-group">
+	                 <input type="text" name="username" placeholder="请输入账号" />
+	              </div>
+	              <div class="m-2-2 form-group">
+	                 <input type="password" name="password" placeholder="请输入密码"/>
+	              </div>
+	              <div class="code m-2-2 form-group">
+		    	<input type="text" name="code" style="width: 195px;" placeholder="请输入验证码" />
+		    	<!-- 验证码外必须被class为code的div嵌套 -->
+		        <canvas id="canvas" width="100" height="30"></canvas>
+			    </div>
+				<div id="slider1" class="slider"></div>
+	             <div class="m-2-2 form-group">
+	                <button type="submit" value="登陆" id="login-btn"> 登陆 </button>
+	             </div>
+	          </form>
+         </center>
     </div>
     <div class="m-5"> 
     <div id="m-5-id-1"> 
@@ -63,7 +74,6 @@ request.setAttribute("path", path);
     <div class="m-xz9"></div>
     <div class="m-xz9-1"></div>
     <!-- ajax加载 -->
-    <!-- 
     <div id="loading" hidden="hidden">
 	    <div class="m-x10"></div>
 	    <div class="m-x11"></div>
@@ -73,7 +83,6 @@ request.setAttribute("path", path);
 	    <div class="m-x15"></div>
 	    <div class="m-x16 xzleft"></div>
     </div>
-     -->
     <div class="m-x17 xzleft"></div>
     <div class="m-x18"></div>
     <div class="m-x19 xzleft"></div>
@@ -108,10 +117,31 @@ request.setAttribute("path", path);
     <div class="m-24" id="localtime"></div>
     </div>
 </div>
-<script src="../assets/js/common.min.js"></script>
+<script src="${path }/assets/js/common.min.js"></script>
 </body>
 <script type="text/javascript">
 $(document).ready(function() {
+	//ajax加载效果
+	$(document).ajaxStart(function(){
+		$('#loading').show();
+	})
+	$(document).ajaxStop(function(){
+		$('#loading').hide();
+	})
+	//验证码
+	var show_num = [];
+	draw(show_num);
+	$("#canvas").on('click',function(){
+		draw(show_num);
+	})
+	//滑块
+	var sliderDone = false;
+	$("#slider1").slider({
+		callback: function(result) {
+			sliderDone = result;
+		}
+	});
+	//验证
     $('#loginForm').bootstrapValidator({
             message: 'This value is not valid',
             fields: {
@@ -141,32 +171,62 @@ $(document).ready(function() {
         .on('success.form.bv', function(e) {
             // Prevent form submission
             e.preventDefault();
-
             // Get the form instance
             var $form = $(e.target);
-
-            // Get the BootstrapValidator instance
-            var bv = $form.data('bootstrapValidator');
 			
-            var psw = $('input[name=password]');
-            psw.val(hex_md5(psw.val()));
+            var val = $("input[name=code]").val().toLowerCase();
+    		var num = show_num.join("");
+    		if(val==''){
+    			alert('请输入验证码！');
+    		}else if(val == num){
+    			if(sliderDone){
+					var psw = $('input[name=password]');
+	                psw.val(hex_md5(psw.val()));
+	                // Use Ajax to submit form data
+	                $form.ajaxSubmit({
+	                	url:'http://localhost:8888/MapApp/api/v1/user/login',
+	                	type:'post',
+	                	success:function(data){
+	                		if(data.status == '200'){
+	                			alert('welcome!');
+	                			location.href = 'views/homepage.jsp';
+	                		}else{
+	                			alert(data.message);
+	                			//重置表单
+	                			$('input[name=password]').val('');
+	                			$('input[name=code]').val('');
+	                			//重置验证码
+	                			$("input[name=code]").val('');
+	                			draw(show_num);
+	                			//重置滑块
+	                			$("#slider1").slider("restore");
+	                			sliderDone = false;
+	                		}
+	                	},
+	                	error:function(){
+	                		alert('unexpected error');
+	                	}
+	                });
+    			}else{
+    				alert('请完成滑块验证！');
+    				//重置滑块
+    				$("#slider1").slider("restore");
+    				sliderDone = false;
+    				//使按钮可用
+    				$('button').removeAttr('disabled');
+    			}
+    		}else{
+    			alert('验证码错误！请重新输入！');
+    			//重置验证码
+    			$("input[name=code]").val('');
+    			draw(show_num);
+    			//重置滑块
+    			$("#slider1").slider("restore");
+    			sliderDone = false;
+    			//使按钮可用
+   				$('button').removeAttr('disabled');
+    		}
             
-            // Use Ajax to submit form data
-            $('#loginForm').ajaxSubmit({
-            	url:'http://localhost:8888/MapApp/api/v1/user/login',
-            	type:'post',
-            	success:function(data){
-            		if(data.status == '200'){
-            			alert('welcome!');
-            			location.href = 'views/homepage.jsp';
-            		}else{
-            			alert(data.message);
-            		}
-            	},
-            	error:function(){
-            		alert('unexpected error');
-            	}
-            });
         });
 });
 </script>
