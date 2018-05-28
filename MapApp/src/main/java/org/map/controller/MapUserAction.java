@@ -59,6 +59,6 @@ public class MapUserAction {
 	@GET
 	@Produces(JSON)
 	public String getPreference(@Context HttpServletRequest request) {
-		return mapUserService.getPreference((String) request.getSession().getAttribute("user"));
+		return mapUserService.getPreference(request);
 	}
 }

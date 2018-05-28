@@ -30,3 +30,7 @@ js时间冒泡：自下而上，this获取冒泡对象
 9.解决tomcat下网络传输乱码问题
 在Tomcat下, 调用的是DoubleByte做decode,在非Tomcat下,调用的是UTF-8的decode
 BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
+
+10.jquery获取radio选中值
+$('input[name=gender]').val() ×（这会返回第一个name=gender的值）
+$('input[name=gender]:checked').val() √

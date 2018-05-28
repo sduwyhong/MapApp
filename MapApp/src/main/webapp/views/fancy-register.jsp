@@ -175,8 +175,8 @@ $(document).ready(function() {
             var json = {
             		username:$('input[name=username]').val(),
             		password:$('input[name=password]').val(),
-            		gender:$('input[name=gender]').val(),
-            		preference:$('input[name=preference]').val()
+            		gender:$('input[name=gender]:checked').val(),
+            		preference:$('input[name=preference]:checked').val()
             	}
             // Use Ajax to submit form data
             $.ajax({

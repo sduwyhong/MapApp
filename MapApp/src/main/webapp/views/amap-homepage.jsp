@@ -119,7 +119,7 @@ select {
                     <a href="#" id="a_interest"><i class="fa fa-fw fa-dropbox"></i> 兴趣点查询</a>
                 </li>
                 <li>
-                    <a href="javascript:$('#myModal').modal()"><i class="fa fa-fw fa-cog"></i> 偏好设置</a>
+                    <a href="http://localhost:8888/MapApp/views/homepage.jsp"><i class="fa fa-fw fa-cog"></i> 切换到百度地图</a>
                 </li>
             </ul>
         </nav>

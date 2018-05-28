@@ -96,7 +96,14 @@ public class MapUserServiceImpl implements MapUserService {
 	}
 
 	@Override
-	public String getPreference(String id) {
+	public String getPreference(HttpServletRequest request) {
+		String id = "";
+		Cookie[] cookies = request.getCookies();
+		for (Cookie cookie : cookies) {
+			if(cookie.getName().equals("user")){
+				id = cookie.getValue();
+			}
+		}
 		Result result = new Result();
 		Byte preference = mapUserMapper.selectPreferenceById(id);
 		result.setResult(preference);

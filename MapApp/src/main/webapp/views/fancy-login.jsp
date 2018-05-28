@@ -40,7 +40,7 @@ request.setAttribute("path", path);
     <div class="m-2">
     	<center>
 	          <form id="loginForm" style="margin-top: 40px;margin-right: 100px;">
-	          	<h4><a href="views/fancy-register.jsp">没有账号？点我注册</a></h4>
+	          	<h4><a href="http://localhost:8888/MapApp/views/fancy-register.jsp">没有账号？点我注册</a></h4>
 	              <div class="m-2-2 form-group">
 	                 <input type="text" name="username" placeholder="请输入账号" />
 	              </div>
@@ -189,7 +189,7 @@ $(document).ready(function() {
 	                	success:function(data){
 	                		if(data.status == '200'){
 	                			alert('welcome!');
-	                			location.href = 'views/homepage.jsp';
+	                			location.href = 'http://localhost:8888/MapApp/views/index.jsp';
 	                		}else{
 	                			alert(data.message);
 	                			//重置表单

@@ -18,5 +18,5 @@ public interface MapUserService {
 	//更改偏好
 	public String switchPreference(String id, Byte preference);
 	//获取当前偏好
-	public String getPreference(String id);
+	public String getPreference(HttpServletRequest request);
 }
