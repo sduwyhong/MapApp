@@ -107,16 +107,16 @@ select {
                     <a href="javascript:service.search()"><i class="fa fa-fw fa-bank"></i> 地点查询</a>
                 </li>
                 <li>
-                    <a href="#" id="a_address"><i class="fa fa-fw fa-bank"></i> 经纬度查询</a>
+                    <a href="javascript:openModal('#address_container')" id="a_address"><i class="fa fa-fw fa-bank"></i> 经纬度查询</a>
                 </li>
                 <li>
-                    <a href="#" id="a_transit"><i class="fa fa-fw fa-bank"></i> 路径规划</a>
+                    <a href="javascript:openModal('#transit_container')" id="a_transit"><i class="fa fa-fw fa-bank"></i> 路径规划</a>
                 </li>
                 <li>
-                    <a href="#" id="a_weather"><i class="fa fa-fw fa-bank"></i> 目的地天气查询</a>
+                    <a href="javascript:openModal('#weather_container')" id="a_weather"><i class="fa fa-fw fa-bank"></i> 目的地天气查询</a>
                 </li>
                 <li>
-                    <a href="#" id="a_interest"><i class="fa fa-fw fa-dropbox"></i> 兴趣点查询</a>
+                    <a href="javascript:openModal('#interest_container')" id="a_interest"><i class="fa fa-fw fa-dropbox"></i> 兴趣点查询</a>
                 </li>
                 <li>
                     <a href="http://localhost:8888/MapApp/views/homepage.jsp"><i class="fa fa-fw fa-cog"></i> 切换到百度地图</a>

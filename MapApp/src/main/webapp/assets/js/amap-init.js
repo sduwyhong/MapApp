@@ -7,7 +7,6 @@ $(document).ready(function () {
 		hamburger_cross();      
 	});
 	function hamburger_cross() {
-
 		if (isClosed == true) {          
 			overlay.hide();
 			trigger.removeClass('is-open');
@@ -24,87 +23,7 @@ $(document).ready(function () {
 		$('#wrapper').toggleClass('toggled');
 	}); 
 	
-	//模态框 
-	function closeOthers(){
-		$("#_start > div").hide(500);
-		$('#myPageTop').hide();
-		$('#result').empty();
-		$('#panel').empty();
-		$('.amap-info-contentContainer').empty();
-	}
-	//路线
-	$("#a_transit").click(function() {
-		closeOthers();
-		$('.hamburger').trigger('click');
-		$('#container').hide();
-		$("#_close").show();
-		$("#_start").animate({
-			left: '350px',
-			height: '520px',
-			width: '400px'
-		}, 500, function() {
-			$("#transit_container").show(500);
-			$("#_close").animate({
-				height: '40px',
-				width: '40px'
-			}, 500);
-		});
-	});
-	//兴趣点
-	$("#a_interest").click(function() {
-		closeOthers();
-		$('.hamburger').trigger('click');
-		$('#container').hide();
-		$("#_close").show();
-		$("#_start").animate({
-			left: '350px',
-			height: '520px',
-			width: '400px'
-		}, 500, function() {
-			$("#interest_container").show(500);
-			$("#_close").animate({
-				height: '40px',
-				width: '40px'
-			}, 500);
-		});
-	});
-	//经纬度
-	$("#a_address").click(function() {
-		closeOthers();
-		$('.hamburger').trigger('click');
-		$('#container').hide();
-		$("#_close").show();
-		$("#_start").animate({
-			left: '350px',
-			height: '520px',
-			width: '400px'
-		}, 500, function() {
-			$("#address_container").show(500);
-			$("#_close").animate({
-				height: '40px',
-				width: '40px'
-			}, 500);
-		});
-	});
-	//天气
-	$("#a_weather").click(function() {
-		closeOthers();
-		$('.hamburger').trigger('click');
-		$('#container').hide();
-		$("#_close").show();
-		$("#_start").animate({
-			left: '350px',
-			height: '520px',
-			width: '400px'
-		}, 500, function() {
-			$("#weather_container").show(500);
-			$("#_close").animate({
-				height: '40px',
-				width: '40px'
-			}, 500);
-		});
-	});
-	//关闭
+	//关闭模态框
 	$("#_close").click(function() {
 		$('#container').show();
 		$("#_close").animate({
@@ -130,3 +49,28 @@ $(document).ready(function () {
 		location.reload();
 	})
 });
+//模态框 
+function closeOthers(){
+	$("#_start > div").hide(500);
+	$('#myPageTop').hide();
+	$('#result').empty();
+	$('#panel').empty();
+	$('.amap-info-contentContainer').empty();
+}
+function openModal(container) {
+	closeOthers();
+	$('.hamburger').trigger('click');
+	$('#container').hide();
+	$("#_close").show();
+	$("#_start").animate({
+		left: '350px',
+		height: '520px',
+		width: '400px'
+	}, 500, function() {
+		$(container+'').show(500);
+		$("#_close").animate({
+			height: '40px',
+			width: '40px'
+		}, 500);
+	});
+}

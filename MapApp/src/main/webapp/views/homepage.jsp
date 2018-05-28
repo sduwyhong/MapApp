@@ -76,16 +76,19 @@ select {
                 </li>
                      -->
                 <li>
-                    <a href="#" id="a_address"><i class="fa fa-fw fa-bank"></i> 经纬度查询</a>
+                    <a href="javascript:openModal('#location_container')" id="a_location"><i class="fa fa-fw fa-bank"></i> 地点查询</a>
                 </li>
                 <li>
-                    <a href="#" id="a_transit"><i class="fa fa-fw fa-bank"></i> 路径规划</a>
+                    <a href="javascript:openModal('#address_container')" id="a_address"><i class="fa fa-fw fa-bank"></i> 经纬度查询</a>
                 </li>
                 <li>
-                    <a href="#" id="a_weather"><i class="fa fa-fw fa-bank"></i> 目的地天气查询</a>
+                    <a href="javascript:openModal('#transit_container')" id="a_transit"><i class="fa fa-fw fa-bank"></i> 路径规划</a>
                 </li>
                 <li>
-                    <a href="#" id="a_interest"><i class="fa fa-fw fa-dropbox"></i> 兴趣点查询</a>
+                    <a href="javascript:openModal('#weather_container')" id="a_weather"><i class="fa fa-fw fa-bank"></i> 目的地天气查询</a>
+                </li>
+                <li>
+                    <a href="javascript:openModal('#interest_container')" id="a_interest"><i class="fa fa-fw fa-dropbox"></i> 兴趣点查询</a>
                 </li>
                 <li>
                     <a href="http://localhost:8888/MapApp/views/amap-homepage.jsp"><i class="fa fa-fw fa-cog"></i> 切换到高德地图</a>
@@ -103,11 +106,13 @@ select {
             <span class="hamb-bottom"> </span>
           </button>
             <div class="container">
+            <!-- 
 	           	<center style="color: #FFFFFF;">地址搜索</center>
 	           	<center>
 	            	<div id="r-result"><input type="text" id="suggestId" size="20" value="百度" style="width:250px;" /></div>
 					<div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
 				</center>
+             -->
             </div>
         </div>
         <!-- /#page-content-wrapper -->

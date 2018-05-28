@@ -5,6 +5,19 @@
 			<span class="glyphicon glyphicon-remove"></span>
 		</div>
 		<br /> 
+		<!--地点查询框-->
+		<div id="location_container" style="display: none;">
+			<div id="lab1">
+				<span id="lab_login">地点查询</span>
+			</div>
+			<div id="form_container1">
+				<br />
+				<label>请输入地点</label>
+				<div id="r-result"><input type="text" id="suggestId" size="20" value="百度" style="width:250px;" /></div>
+				<div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+				<br>
+			</div>
+		</div>
 		<!--路线规划查询框-->
 		<div id="transit_container" style="display: none;">
 			<div id="lab1">
