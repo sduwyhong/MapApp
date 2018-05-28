@@ -16,41 +16,69 @@ request.setAttribute("path", path);
 <link href="${path}/assets/css/homepage-style.css" rel="stylesheet">
 <link rel="stylesheet" href="${path}/assets/css/prompt.css" />
 <link rel="stylesheet" href="${path }/assets/css/bootstrap-table-expandable.css">
+<link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
 <!-- js -->
-<script type="text/javascript"
-	src="http://api.map.baidu.com/api?v=2.0&ak=Aa7xKwUOb51CW6efijIEBedUHFauvLIw"></script>
+<script src="http://cache.amap.com/lbs/static/es5.min.js"></script>
+<script src="http://webapi.amap.com/maps?v=1.4.6&key=cfdfd2d68ef896a2e6b0d66ee36dc288&plugin=AMap.CitySearch,AMap.Transfer,AMap.Autocomplete,AMap.PlaceSearch,AMap.Geocoder"></script>
+<script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
 
 <script type="text/javascript" src="${path}/assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="${path}/assets/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="${path}/assets/js/vue.js"></script>
 <script src="${path }/assets/js/bootstrap-table-expandable.js"></script>
-<script src="${path }/assets/js/JsonpAjax.js"></script>
 <script src="${path }/assets/js/template-native.js"></script>
 <script src="${path }/assets/js/jquery.citys.js"></script>
 	
 <style type="text/css">
-body,html,#allmap {
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-	margin: 0;
-	font-family: "微软雅黑";
-	z-index: -1;
+nav li{
+	margin-top: 10px;
 }
 label {
 	color: #000000;
 }
-li {
-	margin-top: 10px;
-}
 .click_work {
 	background-color: #FFFFFF;
 }
-.tr_weather td{
-	color: #000000;
-	font-size: 10px;
-}
 select {
+	color: #000000;
+}
+#panel {
+      position: absolute;
+      background-color: white;
+      max-height: 80%;
+      overflow-y: auto;
+      top: 10px;
+      right: 10px;
+      width: 250px;
+      border: solid 1px silver;
+}
+ #weather {
+            height: 180px;
+            background-color: #fff;
+            padding-left: 10px;
+            padding-right: 10px;
+            position: absolute;
+            bottom: 20px;
+            font-size: 12px;
+            right: 10px;
+            border-radius: 3px;
+            line-height: 20px;
+            border: 1px solid #ccc;
+ }
+ .weather{
+     width: 60px;
+     padding-left: 8px;
+     display: inline-block;
+ }
+ #interest_panel {
+            position: absolute;
+            background-color: white;
+            max-height: 90%;
+            overflow-y: auto;
+            top: 10px;
+            right: 10px;
+            width: 280px;
+        }
+.poi-name{
 	color: #000000;
 }
 </style>
@@ -75,6 +103,9 @@ select {
             		<center><button type="button" onclick="service.parseAddress()" class="btn btn-success">搜索</button></center>
                 </li>
                      -->
+                <li>
+                    <a href="javascript:service.search()"><i class="fa fa-fw fa-bank"></i> 地点查询</a>
+                </li>
                 <li>
                     <a href="#" id="a_address"><i class="fa fa-fw fa-bank"></i> 经纬度查询</a>
                 </li>
@@ -103,11 +134,6 @@ select {
             <span class="hamb-bottom"> </span>
           </button>
             <div class="container">
-	           	<center style="color: #FFFFFF;">地址搜索</center>
-	           	<center>
-	            	<div id="r-result"><input type="text" id="suggestId" size="20" value="百度" style="width:250px;" /></div>
-					<div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
-				</center>
             </div>
         </div>
         <!-- /#page-content-wrapper -->
@@ -118,11 +144,33 @@ select {
     <%@ include file="prompt.jsp" %>
 	
 	<!-- map start-->
-	<div id="allmap"></div>
+	<div id="container"></div>
     <!-- map end-->
-    
-	<script type="text/javascript" src="${path}/assets/js/init.js"></script>
-	<script type="text/javascript" src="${path}/assets/js/baidumap.js"></script>
-	<script type="text/javascript" src="${path}/assets/js/service.js"></script>
+    <!-- tips -->
+    <div id="myPageTop" style="display: none;">
+	    <table>
+	        <tr>
+	            <td>
+	                <label>请输入关键字：</label>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td>
+	                <input id="tipinput"/>
+	            </td>
+	        </tr>
+	    </table>
+	</div>
+	<!-- address -->
+	<div id="tip">
+	    <span id="result"></span>
+	</div>
+	<!-- route -->
+	<div id="panel"></div>
+	<!-- interest -->
+	<div id="interest_panel"></div>
 </body>
+	<script type="text/javascript" src="${path}/assets/js/amap-init.js"></script>
+	<script type="text/javascript" src="${path}/assets/js/amap.js"></script>
+	<script type="text/javascript" src="${path}/assets/js/amap-service.js"></script>
 </html>

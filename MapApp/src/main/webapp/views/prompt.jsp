@@ -35,7 +35,7 @@
 			<div id="form_container1">
 				<br />
 				<label>请输入您的目的地(Destination)</label>
-				<input type="text" name="dest" class="form-control" placeholder="Destination" autofocus="autofocus"/>
+				<input type="text" name="dest" class="form-control" placeholder="Destination" autofocus="autofocus" value="历下区"/>
 				<br>
 				<!-- 
 				<center><input type="button" value="查询" class="btn btn-success" onclick="service.weather()" /></center>
@@ -69,7 +69,7 @@
 			<div id="form_container1">
 				<br />
 				<label>详细地址(Address)</label>
-				<input type="text" name="address" class="form-control" placeholder="详细地址" autofocus="autofocus"/>
+				<input type="text" name="address" class="form-control" placeholder="详细地址" autofocus="autofocus" value="北京市海淀区苏州街"/>
 				<br>
 				<center><input type="button" value="查询" class="btn btn-success" onclick="service.address()" /></center>
 				<br>
@@ -88,7 +88,7 @@
 			</div>
 			<div id="form_container1">
 				<br />
-				<label>地区(Region)</label>
+				<label>地区(Optional)</label>
 				<!-- <input type="text" name="region" class="form-control" placeholder="地区" value="济南" /> -->
 				<div id="demo" class="citys">
 	                <p>
@@ -108,7 +108,7 @@
 	            </script>
 				<br>
 				<label>兴趣点(Query)</label>
-				<input type="text" name="query" class="form-control" placeholder="兴趣点" autofocus="autofocus"/>
+				<input type="text" name="query" class="form-control" placeholder="兴趣点" autofocus="autofocus" value="火锅"/>
 				<br>
 				<center><input type="button" value="查询" class="btn btn-success" onclick="service.interest()" /></center>
 			</div>

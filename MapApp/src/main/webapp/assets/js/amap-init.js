@@ -27,12 +27,16 @@ $(document).ready(function () {
 	//模态框 
 	function closeOthers(){
 		$("#_start > div").hide(500);
+		$('#myPageTop').hide();
+		$('#result').empty();
+		$('#panel').empty();
+		$('.amap-info-contentContainer').empty();
 	}
 	//路线
 	$("#a_transit").click(function() {
 		closeOthers();
 		$('.hamburger').trigger('click');
-		$('#allmap').hide();
+		$('#container').hide();
 		$("#_close").show();
 		$("#_start").animate({
 			left: '350px',
@@ -50,7 +54,7 @@ $(document).ready(function () {
 	$("#a_interest").click(function() {
 		closeOthers();
 		$('.hamburger').trigger('click');
-		$('#allmap').hide();
+		$('#container').hide();
 		$("#_close").show();
 		$("#_start").animate({
 			left: '350px',
@@ -68,7 +72,7 @@ $(document).ready(function () {
 	$("#a_address").click(function() {
 		closeOthers();
 		$('.hamburger').trigger('click');
-		$('#allmap').hide();
+		$('#container').hide();
 		$("#_close").show();
 		$("#_start").animate({
 			left: '350px',
@@ -86,7 +90,7 @@ $(document).ready(function () {
 	$("#a_weather").click(function() {
 		closeOthers();
 		$('.hamburger').trigger('click');
-		$('#allmap').hide();
+		$('#container').hide();
 		$("#_close").show();
 		$("#_start").animate({
 			left: '350px',
@@ -102,7 +106,7 @@ $(document).ready(function () {
 	});
 	//关闭
 	$("#_close").click(function() {
-		$('#allmap').show();
+		$('#container').show();
 		$("#_close").animate({
 			height: '0px',
 			width: '0px'
