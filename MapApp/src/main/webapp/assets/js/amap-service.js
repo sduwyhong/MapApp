@@ -72,7 +72,7 @@ var service = {
 			});
 			
 		},
-		weather_fancy:function() {
+		weather:function() {
 			$('#_close').trigger('click');
 			 AMap.service('AMap.Weather', function() {
 			        var weather = new AMap.Weather();

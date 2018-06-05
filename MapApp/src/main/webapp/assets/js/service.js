@@ -91,7 +91,7 @@ var service = {
                      data:{
                            location:cityName,
                            output:'json',
-                           ak:'6tYzTvGZSOpYB5Oc2YGGOKt8'
+                           ak:'Aa7xKwUOb51CW6efijIEBedUHFauvLIw'
                      },
                      /*预期服务器端返回的数据类型，假设我现在跨域了，我就改成jsonp 就可以了 */
                  dataType:"jsonp",

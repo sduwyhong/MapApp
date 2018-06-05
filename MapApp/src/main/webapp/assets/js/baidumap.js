@@ -27,8 +27,8 @@ function G(id) {
 }
 
 var ac = new BMap.Autocomplete(    //建立一个自动完成的对象
-		{"input" : "suggestId"
-			,"location" : map
+		{"input" : "suggestId",
+			"location" : map
 		});
 
 ac.addEventListener("onhighlight", function(e) {  //鼠标放在下拉列表上的事件

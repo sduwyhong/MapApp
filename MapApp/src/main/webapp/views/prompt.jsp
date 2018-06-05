@@ -50,7 +50,6 @@
 				<label>请输入您的目的地(Destination)</label>
 				<input type="text" name="dest" class="form-control" placeholder="Destination" autofocus="autofocus" value="历下区"/>
 				<br>
-				<!-- 
 				<center><input type="button" value="查询" class="btn btn-success" onclick="service.weather()" /></center>
 				<br>
 				<div></div>
@@ -58,7 +57,7 @@
 				<center>
 					<p class="p_weather" hidden="hidden"></p>
 				</center>
-				 -->
+				<!-- 
 				<center><input type="button" value="查询" class="btn btn-success" onclick="service.weather_fancy()" /></center>
 				<br>
 				<hr>
@@ -72,6 +71,7 @@
 					    <td></td>
 					</tr>
 				</table>
+				 -->
 			</div>
 		</div>
 		<!--经纬度查询框-->
