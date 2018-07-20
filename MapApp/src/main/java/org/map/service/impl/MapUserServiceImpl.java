@@ -67,8 +67,8 @@ public class MapUserServiceImpl implements MapUserService {
 			result.setMessage("invalid username or password");
 			return JSONObject.toJSONString(result);
 		}
-		MapUser mapUser = list.get(0);
-		if(password.equals(mapUser.getPassword())) {
+		MapUser mapUser = list.get(0);//重复判断了！
+		if(password.equals(mapUser.getPassword())) {//重复判断了！
 			//登录成功
 			request.getSession().setAttribute("user", username);
 			Cookie cookie = new Cookie("user", mapUser.getId());
